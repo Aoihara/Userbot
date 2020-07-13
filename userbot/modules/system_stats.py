@@ -12,7 +12,7 @@ from shutil import which
 from os import remove
 from telethon import version
 
-from userbot import CMD_HELP, ALIVE_NAME, LOGO, UPSTREAM_REPO_BRANCH, OUBnew_VER, CODENAME, bot
+from userbot import CMD_HELP, ALIVE_NAME, UPSTREAM_REPO_BRANCH, OUBnew_VER, CODENAME, bot
 from userbot.events import register
 
 # ================= CONSTANT =================
@@ -181,19 +181,17 @@ async def amireallyalive(alive):
         await alive.edit("`alive Commad isn't permitted on channels`")
         return
     """ For .alive command, check if the bot is running.  """
-    logo = LOGO
     output = (
              f"running on __{UPSTREAM_REPO_BRANCH}__ \n"  
              "----------------------------------------\n"    
              "`Bot Version Info` \n"
-             f"`CODENAME : {CN} v{VER} `\n"
              f"`Telethon : v{version.__version__} `\n"
              f"`Python   : v{python_version()} `\n"
               "----------------------------------------\n"
              f"`User : `{DEFAULTUSER} \n\n"
              f"`All modules loaded with ({MODULESTR}) errors`"
               )
-    await bot.send_file(alive.chat_id, logo, caption=output)
+    await bot.send_file(alive.chat_id, caption=output)
     await alive.delete()
 
 
